@@ -18,7 +18,7 @@ After some research you come to the conclusion, that the ISP behind 171.25.200.2
 
 
 ```shell
-unspam nets 171.25.200.217 REJECT
+$ unspam nets 171.25.200.217 REJECT
 171.25.200.0/23          REJECT
 178.20.96.0/21           REJECT
 185.51.232.0/22          REJECT
@@ -55,14 +55,14 @@ unspam nets 171.25.200.217 REJECT
 91.235.208.0/22          REJECT
 ```
 
-All announed prefixes of that spam ISP will be looked up using the RIPE.net looking glass. Your optional message will apprear behind the net so you can easily paste/add this to your postfix client_checks file.
+All announed prefixes of that spam ISP will be looked up using the [RIPE.net RESTful looking glass](https://stat.ripe.net/docs/data_api) . Your optional message will appear right behind the net so you can easily paste/add this to your postfix client_checks file.
 
 You can use an IP-Address or AS-number to lookup the result.
 
 e.g.
 
 ```shell
-unspam net AS31342
+$ unspam net AS31342
 ```
 
 will produce the identical result.
