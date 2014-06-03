@@ -55,7 +55,7 @@ $ unspam nets 171.25.200.217 REJECT
 91.235.208.0/22          REJECT
 ```
 
-All announed prefixes of that spam ISP will be looked up using the [RIPE.net RESTful looking glass](https://stat.ripe.net/docs/data_api) . Your optional message will appear right behind the net so you can easily paste/add this to your postfix client_checks file.
+All announed prefixes of that spam ISP will be looked up using the [RIPE.net RESTful looking glass](https://stat.ripe.net/docs/data_api). Your optional message will appear right behind the net so you can easily paste/add this to your postfix client_checks file or wrap some shell commands around it.
 
 You can use an IP-Address or AS-number to lookup the result.
 
@@ -67,11 +67,14 @@ $ unspam net AS31342
 
 will produce the identical result.
 
+## Tricks
 
-## Contributing
+To see all announced IP-networks of Amazon AWS, DigitalOcean and Hetzner, try:
 
-1. Fork it ( https://github.com/[my-github-username]/unspam/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+```shell
+$ unspam nets $( dig a +short amazonaws.com | head -n1 )
+$ unspam nets $( dig a +short digitalocean.com | head -n1 )
+$ unspam nets $( dig a +short hetzner.de | head -n1 )
+```
+
+Enjoy!
