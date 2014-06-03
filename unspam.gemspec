@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Unspam::VERSION
   spec.authors       = ["Roland Moriz"]
   spec.email         = ["roland@moriz.de"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{returns IP prefixes by ASN.}
+  spec.description   = %q{returns IP prefixes by ASN.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
