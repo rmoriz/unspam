@@ -3,6 +3,9 @@
 Ultra simple tool to create postfix-compatible IP-blocklists based on AS-Numbers or IP-addresses. This is a very brutal way and should be limited to known spam providers.
 
 ## Installation
+    
+Install Ruby 1.9.3+
+then:
 
     $ gem install unspam
 
