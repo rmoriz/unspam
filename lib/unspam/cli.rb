@@ -2,6 +2,7 @@ require 'thor'
 require 'json'
 require 'httparty'
 require 'ipaddr'
+require 'netaddr'
 
 module Unspam
   class CLI < Thor
@@ -40,7 +41,12 @@ module Unspam
         response = HTTParty.get "https://stat.ripe.net/data/announced-prefixes/data.json?resource=#{asn}&min_peers_seeing=2"
         result = JSON.parse(response.body)
 
-        result['data']['prefixes'].map { |h| h['prefix'] }.sort.each do |prefix|
+        prefixes = Array.new
+        result['data']['prefixes'].map { |h| h['prefix'] }.each do |prefix|
+          prefixes.push(prefix)
+        end
+
+        NetAddr.merge(prefixes.map{ |ip| NetAddr::CIDR.create(ip) }, :Short => true).each do |prefix|
           printf("%-25s%5s\n", prefix, @msg)
         end
       end
