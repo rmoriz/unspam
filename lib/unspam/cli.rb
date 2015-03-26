@@ -37,7 +37,7 @@ module Unspam
       end
 
       def lookup_by_asn(asn)
-        response = HTTParty.get "https://stat.ripe.net/data/announced-prefixes/data.json?resource=#{asn}&min_peers_seeing=1"
+        response = HTTParty.get "https://stat.ripe.net/data/announced-prefixes/data.json?resource=#{asn}&min_peers_seeing=2"
         result = JSON.parse(response.body)
 
         result['data']['prefixes'].map { |h| h['prefix'] }.sort.each do |prefix|
