@@ -46,7 +46,8 @@ module Unspam
           prefixes.push(prefix)
         end
 
-        NetAddr.merge(prefixes.map{ |ip| NetAddr::CIDR.create(ip) }, :Short => true).each do |prefix|
+        supernets = NetAddr.supernets(prefixes.map{ |ip| NetAddr::CIDR.create(ip) })
+        NetAddr.merge(supernets, :Short => true).each do |prefix|
           printf("%-25s%5s\n", prefix, @msg)
         end
       end
